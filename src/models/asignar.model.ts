@@ -1,6 +1,11 @@
 import {Entity, model, property} from '@loopback/repository';
 
-@model()
+@model({ 
+  settings: { 
+  strictObjectIDCoercion: true, 
+  } 
+  }) 
+  
 export class Asignar extends Entity {
   @property({
     type: 'string',
@@ -9,6 +14,10 @@ export class Asignar extends Entity {
   })
   id?: string;
 
+  @property({
+    type: 'string',
+  })
+  tareasId?: string;
 
   constructor(data?: Partial<Asignar>) {
     super(data);

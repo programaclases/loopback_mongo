@@ -1,6 +1,12 @@
-import {Entity, model, property} from '@loopback/repository';
+import {Entity, model, property, hasMany} from '@loopback/repository';
+import {Asignar} from './asignar.model';
 
-@model()
+@model({ 
+  settings: { 
+  strictObjectIDCoercion: true, 
+  } 
+  }) 
+  
 export class Tareas extends Entity {
   @property({
     type: 'string',
@@ -20,6 +26,8 @@ export class Tareas extends Entity {
   })
   descripcion?: string;
 
+  @hasMany(() => Asignar)
+  asignars: Asignar[];
 
   constructor(data?: Partial<Tareas>) {
     super(data);
